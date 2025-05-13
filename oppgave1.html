@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Historiegenerator
+        </title>
+    </head>
+
+
+
+    <body>
+        <div>
+            <h2>
+                Velkommen til generatoren
+            </h2>
+
+            <input type="text" id="first_name" placeholder="fornavn" />
+
+            <select id="gender">
+                <option id="kvinne">
+                    Kvinne
+                </option>
+                <option value="mann">
+                    Mann
+                </option>
+            </select>
+
+            <input type="number" id="birth_date" placeholder="fødselsdato" />
+
+
+            <button onclick="generateStory()">
+                Send inn
+            </button>
+        </div>
+
+        <p id="output"></p>
+
+
+        <script>
+            let output = document.getElementById("output");
+
+            function generateStory() {
+                let name = document.getElementById("first_name").value;
+                let gender = document.getElementById("gender").value;
+                let birth = document.getElementById("birth_date").value;
+
+                let age = 2025 - birth;
+
+                output.innerHTML = `Det var en gang en ${gender} som het ${name}, og var født i ${birth}. Denne personen er nå ${age} år, og har ${100 - age} år igjen til 100-års-dagen sin!`
+            }
+        </script>
+    </body>
+</html>
