@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            PIZZAA!!!!
+        </title>
+
+
+        <style>
+            body {
+                background-color: yellow;
+            }
+
+            button {
+                padding: 4px 8px;
+                margin-top: 20px;
+            }
+
+            img {
+                padding-top: 20px;
+            }
+        </style>
+    </head>
+
+
+
+    <body>
+        <div>
+            <h1>
+                MAMMA MIA, velg pizzaen du vil ha! 🤌 🤌 🤌
+            </h1>
+
+
+            <div>
+                <h2>
+                    Størrelsen
+                </h2>
+
+                <label>
+                    Liten
+                </label>
+                <input type="radio" name="size" value="small" />
+
+                <label>
+                    Stor
+                </label>
+                <input type="radio" name="size" value="large" />
+            </div>
+
+
+            <div>
+                <h2>
+                    Fyll
+                </h2>
+
+                <label>
+                    Kylling
+                </label>
+                <input type="radio" name="topping" value="chicken" />
+
+                <label>
+                    Vegetar
+                </label>
+                <input type="radio" name="topping" value="veggie" />
+            </div>
+
+            <img src="https://i.pinimg.com/564x/12/9a/8f/129a8f9496e9ddba7584220384970df5.jpg" /> <br>
+            
+            <button onclick="buyPizza()">
+                Kjøp
+            </button>
+        </div>
+
+        <p id="output"></p>
+        
+        
+
+
+        <script>
+            //"Din bestilling av 1 <størrelse> <fyll>-pizza blir levert til deg innen 59 minutter! Bon appetit!"
+            let output = document.getElementById("output");
+            
+            function buyPizza() {
+                let size = document.getElementsByName("size").value;
+                let topping = document.getElementsByName("topping").value;
+
+                output.innerHTML = `Din bestilling av 1 ${size} ${topping}-pizza blir levert til deg innen 59 minutter! Bon appetit!`
+            }
+        </script>
+    </body>
+</html>
