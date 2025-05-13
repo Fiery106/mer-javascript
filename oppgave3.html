@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Fergetur for hele familien!
+        </title>
+    </head>
+
+
+    
+    <body>
+        <div>
+            <h1>
+                Lorem ipsum dolor sit amet consectetur.
+            </h1>
+
+            <div>
+                <input type="text" id="adults" placeholder="antall voksen" />
+
+                <input type="text" id="kids" placeholder="antall barn" />
+
+                <input type="text" id="elderly" placeholder="antall honnør" />
+            </div>
+            
+            <p>
+                Enkeltreise eller tur/retur?
+            </p>
+
+            <label>
+                Enkeltreise
+            </label>
+            <input type="radio" name="travel" id="travel" value="one_way" />
+
+            <label>
+                Tur/Retur
+            </label>
+            <input type="radio" name="travel" id="travel" value="both_ways" /> <br>
+
+
+
+            <button onclick="travelPlan()">
+                Bestill billetter
+            </button>
+        </div>
+
+        <p id="output"></p>
+
+
+        <script>
+            let output = document.getElementById("output");
+
+            let price_adult = 100;
+            let price_kid = 50;
+            let price_elderly = 60;
+
+            
+            function travelPlan() {
+                // "Totalprisen for <antVoksne> voksne, <antBarn> og <antHonnor> honnør, er <pris> kroner. God tur!" 
+
+                let adults = document.getElementById("adults").value;
+                let kids = document.getElementById("kids").value;
+                let elderly = document.getElementById("elderly").value;
+
+                let travel = document.getElementsByName("travel");
+
+
+                if (travel[0].checked) { //Enkeltreise
+                    output.innerHTML = writeOutput(adults, kids, elderly, 1)
+                } else if (travel[1].checked) { //Tur og Retur
+                    output.innerHTML = writeOutput(adults, kids, elderly, 0.75)
+                }
+            }
+
+
+            function writeOutput(a, b, c, x) { //x er rabatten
+                return `Totalprisen for ${a} voksen, ${b} barn og ${c} honnør, er 
+
+                    ${((a * price_adult + b * price_kid + c * price_elderly) * x).toFixed(2)}
+
+                kroner. God tur!`
+            }
+        </script>
+    </body>
+</html>
