@@ -4,6 +4,14 @@
         <title>
             Fergetur for hele familien!
         </title>
+
+
+        <style>
+            .error {
+                background-color: red;
+                color: white;
+            }
+        </style>
     </head>
 
 
@@ -49,6 +57,7 @@
         <script>
             let output = document.getElementById("output");
 
+
             let price_adult = 100;
             let price_kid = 50;
             let price_elderly = 60;
@@ -63,11 +72,17 @@
 
                 let travel = document.getElementsByName("travel");
 
-
-                if (travel[0].checked) { //Enkeltreise
-                    output.innerHTML = writeOutput(adults, kids, elderly, 1)
-                } else if (travel[1].checked) { //Tur og Retur
-                    output.innerHTML = writeOutput(adults, kids, elderly, 0.75)
+                
+                if (adults && kids && elderly) {
+                    output.classList.remove("error");
+                    if (travel[0].checked) { //Enkeltreise
+                        output.innerHTML = writeOutput(adults, kids, elderly, 1)
+                    } else if (travel[1].checked) { //Tur og Retur
+                        output.innerHTML = writeOutput(adults, kids, elderly, 0.75)
+                    }
+                } else {
+                    output.classList.add("error");
+                    output.innerHTML = "Vennligst fyll inn alle felter"
                 }
             }
 
