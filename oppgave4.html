@@ -39,12 +39,12 @@
                 <label>
                     Liten
                 </label>
-                <input type="radio" name="size" value="small" />
+                <input type="radio" name="size" value="liten" />
 
                 <label>
                     Stor
                 </label>
-                <input type="radio" name="size" value="large" />
+                <input type="radio" name="size" value="stor" />
             </div>
 
 
@@ -56,12 +56,34 @@
                 <label>
                     Kylling
                 </label>
-                <input type="radio" name="topping" value="chicken" />
+                <input type="radio" name="topping" value="kylling" />
 
                 <label>
                     Vegetar
                 </label>
-                <input type="radio" name="topping" value="veggie" />
+                <input type="radio" name="topping" value="vegetar" />
+
+                <label>
+                    Taco
+                </label>
+                <input type="radio" name="topping" value="taco" />
+            </div>
+
+
+            <div>
+                <h2>
+                    Brød
+                </h2>
+
+                <label>
+                    Fint
+                </label>
+                <input type="radio" name="bread" value="fint" />
+
+                <label>
+                    Grov
+                </label>
+                <input type="radio" name="bread" value="grov" />
             </div>
 
             <img src="https://i.pinimg.com/564x/12/9a/8f/129a8f9496e9ddba7584220384970df5.jpg" /> <br>
@@ -81,10 +103,36 @@
             let output = document.getElementById("output");
             
             function buyPizza() {
-                let size = document.getElementsByName("size").value;
-                let topping = document.getElementsByName("topping").value;
+                let size = document.getElementsByName("size");
+                let topping = document.getElementsByName("topping");
+                let bread = document.getElementsByName("bread");
 
-                output.innerHTML = `Din bestilling av 1 ${size} ${topping}-pizza blir levert til deg innen 59 minutter! Bon appetit!`
+                let x = "";
+                let y = "";
+
+                if (size[0].checked) {
+                    x += size[0].value + " "
+                } else if ((size[1].checked)) {
+                    x += size[1].value + " "
+                }
+
+                if (topping[0].checked) {
+                    x += topping[0].value
+                } else if ((topping[1].checked)) {
+                    x += topping[1].value
+                } else if ((topping[2].checked)) {
+                    x += topping[2].value
+                }
+
+                if (bread[0].checked) {
+                    y += bread[0].value + " "
+                } else if ((bread[1].checked)) {
+                    y += bread[1].value + " "
+                }
+
+                if (x && y) {
+                    output.innerHTML = `Din bestilling av 1 ${x}-pizza med ${y} brød blir levert til deg innen 59 minutter! Bon appetit!`
+                }
             }
         </script>
     </body>
